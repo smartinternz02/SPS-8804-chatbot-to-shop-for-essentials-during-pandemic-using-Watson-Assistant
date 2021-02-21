@@ -139,6 +139,9 @@
           "text": "price"
         },
         {
+          "text": "price of"
+        },
+        {
           "text": "what is the price ?"
         }
       ],
@@ -422,31 +425,11 @@
     },
     {
       "type": "standard",
-      "title": "prices",
-      "next_step": {
-        "behavior": "jump_to",
-        "selector": "body",
-        "dialog_node": "node_7_1613415430670"
-      },
-      "conditions": "#price",
-      "digress_in": "does_not_return",
-      "dialog_node": "node_1_1613503177695",
-      "previous_sibling": "node_8_1613414511398"
-    },
-    {
-      "type": "standard",
-      "output": {
-        "generic": [
-          {
-            "values": [
-              {
-                "text": "here are the prices for vegetables"
-              }
-            ],
-            "response_type": "text",
-            "selection_policy": "sequential"
-          }
-        ]
+      "title": "price of vegetables",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
       },
       "next_step": {
         "behavior": "jump_to",
@@ -456,7 +439,7 @@
       "conditions": "#price && @vegetables",
       "digress_in": "does_not_return",
       "dialog_node": "node_1_1613504732569",
-      "previous_sibling": "node_1_1613503177695"
+      "previous_sibling": "node_8_1613414511398"
     },
     {
       "type": "standard",
@@ -479,19 +462,19 @@
               }
             ],
             "response_type": "text",
-            "selection_policy": "random"
+            "selection_policy": "multiline"
           },
           {
             "values": [],
             "response_type": "text",
-            "selection_policy": "sequential"
+            "selection_policy": "multiline"
           }
         ]
       },
       "conditions": "#offers",
       "digress_in": "does_not_return",
       "dialog_node": "node_2_1613414101105",
-      "previous_sibling": "Welcome"
+      "previous_sibling": "node_3_1613931829262"
     },
     {
       "type": "standard",
@@ -608,6 +591,36 @@
       },
       "conditions": "input.text && @vegetables || @dairy || @cleaning",
       "dialog_node": "node_3_1613508624292"
+    },
+    {
+      "type": "standard",
+      "title": "prices",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "choose category"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {
+        "_customization": {
+          "mcr": false
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_7_1613415430670"
+      },
+      "conditions": "#price",
+      "dialog_node": "node_3_1613931829262",
+      "previous_sibling": "Welcome"
     },
     {
       "type": "standard",
@@ -792,10 +805,16 @@
       "output": {
         "generic": [
           {
-            "title": "",
-            "options": [],
-            "description": "potato   1 USD  Tomatoes 1 USD/ Peppers  3 - 5 USD",
-            "response_type": "option"
+            "values": [
+              {
+                "text": "here are the prices for vegetables"
+              },
+              {
+                "text": "potato 1kg 2 USD / pepper  1.5 USD / tomato 1 kg 0.5 USD"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
           },
           {
             "values": [
